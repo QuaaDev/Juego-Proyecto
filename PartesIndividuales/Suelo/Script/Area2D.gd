@@ -28,3 +28,4 @@ func obtener_cuadricula():
 	for i in lista_de_cuadriculas_a_actualizar: #Se actualiza las cuadriculas
 		tile_map.erase_cell(0, tile_map.local_to_map(i))
 	pass
+#Probando git
