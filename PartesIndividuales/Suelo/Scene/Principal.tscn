@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ktpc5u1xfekm"]
+[gd_scene load_steps=8 format=3 uid="uid://ktpc5u1xfekm"]
 
 [ext_resource type="Texture2D" uid="uid://pd63m70gji" path="res://Assets/PisoBeta.png" id="1_gv26j"]
+[ext_resource type="Script" path="res://Script/ConstructorSuelo.gd" id="1_jcsad"]
 [ext_resource type="PackedScene" uid="uid://crlwn3x2guj00" path="res://Scene/Player.tscn" id="2_hyhpn"]
 [ext_resource type="Script" path="res://Script/Rompiendo el tilemap muajaja.gd" id="2_v4r4m"]
-[ext_resource type="Script" path="res://Script/Area2D.gd" id="4_prs2g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d3b7q"]
 font_size = 45
@@ -19,33 +19,22 @@ texture_region_size = Vector2i(40, 40)
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(20, 20, -20, 20, -20, -20, 20, -20)
-1:0/0/custom_data_0 = 100
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
-2:0/0/custom_data_1 = 100
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
-3:0/0/custom_data_2 = 100
 
 [sub_resource type="TileSet" id="TileSet_0yk5v"]
 tile_size = Vector2i(40, 40)
 physics_layer_0/collision_layer = 1
-custom_data_layer_0/name = "Hierro"
-custom_data_layer_0/type = 2
-custom_data_layer_1/name = "Comida"
-custom_data_layer_1/type = 2
-custom_data_layer_2/name = "Madera"
-custom_data_layer_2/type = 2
 sources/0 = SubResource("TileSetAtlasSource_7335a")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a36ui"]
-radius = 240.0
-
 [node name="Node2D" type="Node"]
+script = ExtResource("1_jcsad")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -84,10 +73,3 @@ script = ExtResource("2_v4r4m")
 position = Vector2(-380, -303)
 collision_layer = 2
 collision_mask = 0
-
-[node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("4_prs2g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(80, 40)
-shape = SubResource("CircleShape2D_a36ui")
