@@ -1,9 +1,11 @@
 extends Area2D
 class_name Zona_de_recursos
 var tipo_recurso : int #Recurso de la zona
+#Hierro 1 comida 2 madera 3
 var radio_de_la_zona : int #Radio del Circle Shape
 var tamaño_cells : int #Cada cuantos pixeles se colocara una cell
 var coordenadas_shape : Vector2 #Coordenadas de la zona en el mapa
+var Cantidad
 var collision_shape_2d #Collisionshape que le dara hitbox
 @onready var tile_map = $"../TileMap"
 #Los nodos deben de estar a la misma altura para funcionar la ruta
@@ -26,11 +28,17 @@ func editar_cuadricula():
 	#print(lista_de_cuadriculas_a_actualizar)
 	for i in lista_de_cuadriculas_a_actualizar: #Se actualiza las cuadriculas
 		tile_map.erase_cell(0, tile_map.local_to_map(i))
-		tile_map.set_cell(0,tile_map.local_to_map(i),0,Vector2(1,0),0)
+		tile_map.set_cell(0,tile_map.local_to_map(i),0,Vector2(tipo_recurso,0),0)
 		#tile_map.set_cell(int layer:o,coordenadas de la cell: Vector2, source_id int, atlas_coordenadas Vector2(0,0),alternative_tile int)
 		#Con esos datos se cambia cell de manera individual
 		#layer: no se que es, coordenadas es la coordenada individual de la cell, se obtiene con local_to_map, source id no se que es, atlas coordenadas es 
 		#la division del sprite en la cuadricula, alternative tile no se que es
+	#Radio 40 = 4
+	#Radio 80 = 12 | +8
+	#Radio 120 = 32 | +20
+	#Radio 160 = 52 | +20
+	#Radio 200 = 80 | +28
+	#Radio 240 = 112 | +32
 	pass
 #Probando git
 func iniciar_zona(recurso : int,radio : int, tamaño_cell : int, coordenadas_shape2 : Vector2):

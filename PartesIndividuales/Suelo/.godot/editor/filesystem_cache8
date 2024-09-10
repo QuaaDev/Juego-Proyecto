@@ -1,12 +1,14 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1725914273
+::res://::1725988628
 ::res://Assets/::1724804870
 icon.svg::CompressedTexture2D::5485118346637796457::1724790178::1724790915::1::::<><>::
 PisoBeta.png::CompressedTexture2D::917784340567450::1724804794::1724804870::1::::<><>::
-::res://Scene/::1725068449
-Player.tscn::PackedScene::5990120361108913455::1725068449::0::1::::<><>::res://Script/Movimiento_jugador.gd<>uid://ckfbdlbjl564t::::res://Assets/icon.svg
-Principal.tscn::PackedScene::742027547995617224::1725068449::0::1::::<><>::uid://pd63m70gji::::res://Assets/PisoBeta.png<>uid://crlwn3x2guj00::::res://Scene/Player.tscn<>res://Script/Rompiendo el tilemap muajaja.gd<>res://Script/Area2D.gd
-::res://Script/::1725068277
-Area2D.gd::GDScript::-1::1725068277::0::1::::<>Area2D<>::
+::res://Scene/::1725921155
+Player.tscn::PackedScene::5990120361108913455::1725920435::0::1::::<><>::res://Script/Movimiento_jugador.gd<>uid://ckfbdlbjl564t::::res://Assets/icon.svg
+Principal.tscn::PackedScene::742027547995617224::1725920435::0::1::::<><>::uid://pd63m70gji::::res://Assets/PisoBeta.png<>res://Script/ConstructorSuelo.gd<>uid://crlwn3x2guj00::::res://Scene/Player.tscn<>res://Script/Rompiendo el tilemap muajaja.gd
+zona_recurso.tscn::PackedScene::5640214116406265825::1725921155::0::1::::<><>::res://Script/Area2D.gd
+::res://Script/::1725920595
+Area2D.gd::GDScript::-1::1725920595::0::1::::Zona_de_recursos<>Area2D<>::
+ConstructorSuelo.gd::GDScript::-1::1725920435::0::1::::<>Node<>::
 Movimiento_jugador.gd::GDScript::-1::1724811868::0::1::::<>CharacterBody2D<>::
 Rompiendo el tilemap muajaja.gd::GDScript::-1::1724875748::0::1::::<>TileMap<>::
