@@ -5,7 +5,7 @@ var tipo_recurso : int #Recurso de la zona
 var radio_de_la_zona : int #Radio del Circle Shape
 var tamaño_cells : int #Cada cuantos pixeles se colocara una cell
 var coordenadas_shape : Vector2 #Coordenadas de la zona en el mapa
-var Cantidad
+var cantidad_del_recurso : int
 var collision_shape_2d #Collisionshape que le dara hitbox
 @onready var tile_map = $"../TileMap"
 #Los nodos deben de estar a la misma altura para funcionar la ruta
@@ -41,8 +41,9 @@ func editar_cuadricula():
 	#Radio 240 = 112 | +32
 	pass
 #Probando git
-func iniciar_zona(recurso : int,radio : int, tamaño_cell : int, coordenadas_shape2 : Vector2):
+func iniciar_zona(recurso : int,radio : int, tamaño_cell : int, coordenadas_shape2 : Vector2, cantidad : int):
 	#Se carga las propiedades del Area2D
+	cantidad_del_recurso = cantidad
 	tipo_recurso = recurso
 	radio_de_la_zona = radio
 	tamaño_cells = tamaño_cell
@@ -61,3 +62,4 @@ func iniciar_zona(recurso : int,radio : int, tamaño_cell : int, coordenadas_sha
 	#Se le agrega el shape al collisionshape
 	collision_shape_2d.set_shape(shape_circular)
 	editar_cuadricula()
+
