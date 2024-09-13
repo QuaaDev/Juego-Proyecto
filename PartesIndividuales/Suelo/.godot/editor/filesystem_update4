@@ -1,3 +1,7 @@
 res://Scene/Principal.tscn
-res://Scene/Player.tscn
 res://Script/Area2D.gd
+res://Scene/Player.tscn
+res://Scene/zona_recurso.tscn
+res://Script/ConstructorSuelo.gd
+res://Script/probando algo.gd
+res://Script/Movimiento_jugador.gd
