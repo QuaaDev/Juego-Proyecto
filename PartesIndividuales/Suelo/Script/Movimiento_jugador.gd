@@ -1,13 +1,14 @@
 extends CharacterBody2D
 const SPEED = 300.0
 @onready var tile_map = $"../TileMap"
-#Hay que recibir la señal en el objeto 
-
 #Se declara las variables de las areas2d
 @onready var area1
 @onready var area2
 @onready var area3
 #Area2D
+#Referencia al controlador principal
+@onready var principal = $".."
+
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -27,15 +28,13 @@ func _physics_process(_delta):
 
 #Area2D
 func _on_timer_timeout():
-	#Se hace time out para dar tiempo a crear todos los nodos antes de proceder
-	area1 = $"../Area1"
-	area2 = $"../Area2"
-	area3 = $"../Area3"
-	#Se hace referencia de las areas y almacenarlas
-	#Se le conecta a la señal con Variable.Señal.connect(Funcion que recibe la señal)
-	area1.body_entered.connect(nose)
-	area2.body_entered.connect(nose)
-	area3.body_entered.connect(nose)
-func nose(body): #Esta funcion recibe la señal
-	print("nose")
+	#Se recibe la lista de areas de recurso
+	var lista_de_areas_de_recurso = principal.areas_de_recurso 
+	for i in lista_de_areas_de_recurso:
+		#Se conecta cada recurso al jugador
+		i.body_entered.connect(i.entrando_al_recurso)
+		i.body_exited.connect(i.saliendo_del_recurso)
+		#Se conectan a la funcion del objeto del area
+		#Se hace time out para dar tiempo a crear todos los nodos antes de proceder
+		#Se le conecta a la señal con Variable.Señal.connect(Funcion que recibe la señal)
 #Area2D
