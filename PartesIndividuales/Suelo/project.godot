@@ -14,3 +14,7 @@ config/name="Suelo"
 run/main_scene="res://Scene/Principal.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://Assets/icon.svg"
+
+[debug]
+
+gdscript/warnings/integer_division=0
