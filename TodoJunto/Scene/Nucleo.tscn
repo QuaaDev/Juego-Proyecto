@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cem14uls4kwk"]
+
+[ext_resource type="PackedScene" uid="uid://ktpc5u1xfekm" path="res://Scene/Suelo.tscn" id="1_osif7"]
+[ext_resource type="Script" path="res://Script/ControladorEscena.gd" id="1_tgs13"]
+[ext_resource type="PackedScene" uid="uid://crlwn3x2guj00" path="res://Scene/Player.tscn" id="3_xxmsj"]
+
+[node name="Nucleo" type="Node"]
+
+[node name="Menu" type="Node" parent="."]
+
+[node name="EscenaPrincipal" type="Node" parent="Menu"]
+script = ExtResource("1_tgs13")
+
+[node name="Suelo" parent="Menu/EscenaPrincipal" instance=ExtResource("1_osif7")]
+
+[node name="Player" parent="Menu/EscenaPrincipal" instance=ExtResource("3_xxmsj")]

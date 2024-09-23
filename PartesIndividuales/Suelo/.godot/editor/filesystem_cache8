@@ -1,14 +1,14 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1726440710
+::res://::1727121099
 ::res://Assets/::1724804870
 icon.svg::CompressedTexture2D::5485118346637796457::1724790178::1724790915::1::::<><>::
 PisoBeta.png::CompressedTexture2D::917784340567450::1724804794::1724804870::1::::<><>::
-::res://Scene/::1726257106
-Player.tscn::PackedScene::5990120361108913455::1726257071::0::1::::<><>::res://Script/Movimiento_jugador.gd<>uid://ckfbdlbjl564t::::res://Assets/icon.svg
-Principal.tscn::PackedScene::742027547995617224::1726257106::0::1::::<><>::uid://pd63m70gji::::res://Assets/PisoBeta.png<>res://Script/ConstructorSuelo.gd<>uid://crlwn3x2guj00::::res://Scene/Player.tscn<>res://Script/probando algo.gd
-zona_recurso.tscn::PackedScene::5640214116406265825::1726257071::0::1::::<><>::res://Script/Area2D.gd
-::res://Script/::1726257070
-Area2D.gd::GDScript::-1::1726256704::0::1::::Zona_de_recursos<>Area2D<>::
-ConstructorSuelo.gd::GDScript::-1::1726257070::0::1::::<>Node<>::
-Movimiento_jugador.gd::GDScript::-1::1726257070::0::1::::<>CharacterBody2D<>::
-probando algo.gd::GDScript::-1::1726254297::0::1::::<>Area2D<>::
+::res://Scene/::1726590556
+Player.tscn::PackedScene::5990120361108913455::1726590556::0::1::::<><>::res://Script/Movimiento_jugador.gd<>uid://ckfbdlbjl564t::::res://Assets/icon.svg
+Principal.tscn::PackedScene::742027547995617224::1726590556::0::1::::<><>::uid://pd63m70gji::::res://Assets/PisoBeta.png<>res://Script/ConstructorSuelo.gd<>res://Script/ControladorCanvas.gd<>uid://crlwn3x2guj00::::res://Scene/Player.tscn
+zona_recurso.tscn::PackedScene::5640214116406265825::1726590556::0::1::::<><>::res://Script/Area2D.gd
+::res://Script/::1726590556
+Area2D.gd::GDScript::-1::1726590556::0::1::::Zona_de_recursos<>Area2D<>::
+ConstructorSuelo.gd::GDScript::-1::1726446721::0::1::::<>Node<>::
+ControladorCanvas.gd::GDScript::-1::1726445800::0::1::::<>CanvasLayer<>::
+Movimiento_jugador.gd::GDScript::-1::1726444436::0::1::::<>CharacterBody2D<>::
