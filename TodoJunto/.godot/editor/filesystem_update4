@@ -1,0 +1,4 @@
+res://Scene/Nucleo.tscn
+res://Script/Area2D.gd
+res://Scene/Suelo.tscn
+res://Script/Movimiento_jugador.gd

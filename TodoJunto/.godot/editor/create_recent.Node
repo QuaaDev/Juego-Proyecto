@@ -1,0 +1,11 @@
+Node
+Timer
+CollisionShape2D
+Area2D
+Label
+TextEdit
+CanvasLayer
+Camera2D
+Sprite2D
+CharacterBody2D
+TileMap
