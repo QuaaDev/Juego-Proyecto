@@ -1,4 +1,7 @@
-res://Scene/Nucleo.tscn
 res://Script/Area2D.gd
+res://Scene/aldeano.tscn
+res://Script/IA_aldeano.gd
+res://Scene/Nucleo.tscn
 res://Scene/Suelo.tscn
-res://Script/Movimiento_jugador.gd
+res://Script/ControladorEscena.gd
+res://Scene/zona_recurso.tscn

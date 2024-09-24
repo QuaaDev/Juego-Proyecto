@@ -4,7 +4,6 @@ var cantidad_hierro = 0
 var cantidad_comida = 0
 var cantidad_madera = 0
 #Hierro 1 comida 2 madera 3
-#"Menu/EscenaPrincipal/Suelo/CanvasLayer"
 @onready var suelo = $Suelo
 @onready var canvas = $"Suelo/CanvasLayer"
 func _ready():
@@ -39,4 +38,12 @@ func actualizar_recursos(recurso,cantidad):
 
 #Elimina al Area2D junto a todos sus hijos
 func actualizar_area_agotada(objeto):
+	areas_de_recurso.erase(objeto)
 	objeto.queue_free()
+
+#Devuelve las coordenadas de las areas de recursos
+func obtener_coordenadas_area_recursos():
+	var lista_coordenadas = []
+	for i in areas_de_recurso:
+		lista_coordenadas.append(i.collision_shape_2d.position)
+	return lista_coordenadas
