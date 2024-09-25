@@ -11,16 +11,28 @@ var moverse_y = false
 #Velocidad del aldeano
 const velocidad = 40
 #Velocidad del aldeano
+#Timer
+@onready var timer = $Timer
+@export var tipo_de_recurso : int
 #Cuando todo este iniciado, ejecuta el codigo
 func _on_timer_timeout():
 	buscar_recurso_cercano()
 func buscar_recurso_cercano():
+	print(tipo_de_recurso)
 	var distancia = []
 	var resultado_distancia = []
+	#prueba
+	var lista_de_coordenadas_validas = []
+	var areas_de_recursos = escena_principal.obtener_areas_de_recursos()
+	for i in areas_de_recursos:
+		if i.tipo_recurso == tipo_de_recurso:
+			lista_de_coordenadas_validas.append(i.collision_shape_2d.position)
+	print(lista_de_coordenadas_validas)
+	#prueba
 	#Obtiene las coordenadas de todos los recursos
-	coordenadas_recursos = escena_principal.obtener_coordenadas_area_recursos()
+	#coordenadas_recursos = escena_principal.obtener_coordenadas_area_recursos()
 	#Almacena la diferencia entre las coordenadas en valor absoluto
-	for i in coordenadas_recursos:
+	for i in lista_de_coordenadas_validas:
 		distancia.append(Vector2(
 			abs(int(i.x) - int(position.x)),
 			abs(int(i.y) - int(position.y))
@@ -29,11 +41,19 @@ func buscar_recurso_cercano():
 	for i in distancia:
 		resultado_distancia.append(i.x + i.y)
 	#Obtiene las coordenadas del recurso mas cercano al aldeano
-	recurso_mas_cercano = escena_principal.areas_de_recurso[resultado_distancia.find(resultado_distancia.min())].coordenadas_shape
-	#Activa el movimiento
-	#El aldeano ira AL CENTRO del recurso, hay que arreglar esto mas adelante para que solo sea necesario el borde
-	moverse_x = true
-	moverse_y = true
+	#Si la lista no logro almacenar informacion significa que no hay recursos
+	#Si no hay recursos, se saltea el codigo para evitar errores
+	print(str(resultado_distancia) + "SOY" + name)
+	if resultado_distancia.size() > 0:
+		recurso_mas_cercano = escena_principal.areas_de_recurso[resultado_distancia.find(resultado_distancia.min())].coordenadas_shape
+		#Activa el movimiento
+		#El aldeano ira AL CENTRO del recurso, hay que arreglar esto mas adelante para que solo sea necesario el borde
+		moverse_x = true
+		moverse_y = true
+	else:
+		print("No quedan recursos de X tipo")
+	resultado_distancia.clear()
+	
 func _process(_delta):
 	#Interruptor para el movimiento
 	if moverse_x or moverse_y:
@@ -57,3 +77,12 @@ func _process(_delta):
 		#Ejecuta el movimiento
 		move_and_slide()
 	pass
+#Cuando entra a la zona de recursos, frena el movimiento automaticamente
+#Esta señal la envia la zona de recursos al detectar el body
+func estoy_dentro_de_la_zona():
+	moverse_x = false
+	moverse_y = false
+
+#Se resetea el timer para ejecutar el codigo de buscar recursos esperando a que el antiguo desaparezca
+func recurso_local_agotado():
+	timer.start()

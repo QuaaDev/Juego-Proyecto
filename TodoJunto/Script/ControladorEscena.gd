@@ -47,3 +47,9 @@ func obtener_coordenadas_area_recursos():
 	for i in areas_de_recurso:
 		lista_coordenadas.append(i.collision_shape_2d.position)
 	return lista_coordenadas
+func obtener_areas_de_recursos():
+	return areas_de_recurso
+
+func activar_entered_body_area2d(objeto):
+	objeto.body_entered.connect(objeto.entrando_al_recurso)
+	objeto.body_exited.connect(objeto.saliendo_del_recurso)

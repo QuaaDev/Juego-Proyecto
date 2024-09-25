@@ -1,8 +1,8 @@
+CollisionShape2D
 Timer
 Sprite2D
 CharacterBody2D
 Node
-CollisionShape2D
 Area2D
 Label
 TextEdit
