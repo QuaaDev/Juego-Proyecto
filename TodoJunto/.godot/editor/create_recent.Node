@@ -1,11 +1,11 @@
-Node
-Timer
 CollisionShape2D
+Timer
+Sprite2D
+CharacterBody2D
+Node
 Area2D
 Label
 TextEdit
 CanvasLayer
 Camera2D
-Sprite2D
-CharacterBody2D
 TileMap

@@ -1,11 +1,14 @@
 extends Area2D
 class_name Zona_de_recursos
 #Recursos
-
 var tipo_recurso : int #Recurso de la zona
 #Hierro 1 comida 2 madera 3
 var velocidad_actualizacion_recursos = 10000
 #Recursos
+#Aldeanos
+var lista_de_aldeanos = []
+#Una lista de aldeanos dentro de la zona de recursos para comunicarse con ellos mas tarde
+#Aldeanos
 var radio_de_la_zona : int #Radio del Circle Shape
 var tamaño_cells : int #Cada cuantos pixeles se colocara una cell
 var coordenadas_shape : Vector2 #Coordenadas de la zona en el mapa
@@ -14,7 +17,7 @@ var collision_shape_2d #Collisionshape que le dara hitbox
 var lista_de_cuadriculas_a_actualizar = []
 @onready var tile_map = $"../TileMap"
 @onready var yo_mismo = $"."
-@onready var EscenaPrincipal = get_parent().get_parent() #<--- actualizar
+@onready var EscenaPrincipal = get_parent().get_parent() 
 #Los nodos deben de estar a la misma altura para funcionar la ruta
 #Seccion TileMap
 func editar_cuadricula():
@@ -52,6 +55,9 @@ func recurso_agotado():
 	#Actualiza el tilemap al atlas predeterminado
 	for i in lista_de_cuadriculas_a_actualizar:
 		tile_map.set_cell(0,tile_map.local_to_map(i),0,Vector2(0,0),0)
+	#Envia el mensaje a todos los aldeanos locales que se agoto el recurso
+	for i in lista_de_aldeanos:
+		i.recurso_local_agotado()
 	#Elimina el Area2D junto a todos sus hijos
 	EscenaPrincipal.actualizar_area_agotada(yo_mismo)
 func iniciar_zona(recurso : int,radio : int, tamaño_cell : int, coordenadas_shape2 : Vector2, cantidad : int):
@@ -85,12 +91,25 @@ func _ready():
 	temporizador.wait_time = 1
 	temporizador.start()
 	temporizador.timeout.connect(actualizar_recurso)
+	#Se agrega la señal enteredbody luego de cargar todo
+	EscenaPrincipal.activar_entered_body_area2d(yo_mismo)
 	
-func entrando_al_recurso(_body):
-	temporizador.paused = false
+func entrando_al_recurso(body):
+	if body.name.contains("Aldeano"):
+		#Desactiva el movimiento del aldeano
+		if body.tipo_de_recurso == tipo_recurso:
+			body.estoy_dentro_de_la_zona()
+			#Activa la recoleccion de recurso
+			temporizador.paused = false
+			#Almacena al aldeano en la lista
+			lista_de_aldeanos.append(body)
+		else:
+			#print("Entro en la zona, pero con el recurso equivocado :(")
+			pass
 	
-func saliendo_del_recurso(_body):
-	temporizador.paused = true
+func saliendo_del_recurso(body):
+	if body.name.contains("Aldeano"):
+		temporizador.paused = true
 
 
 func actualizar_recurso():
