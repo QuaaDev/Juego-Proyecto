@@ -11,6 +11,8 @@ var moverse_y = false
 #Velocidad del aldeano
 const velocidad = 40
 #Velocidad del aldeano
+var movimientos_repetidos_x = []
+var movimientos_repetidos_y = []
 #Timer
 @onready var timer = $Timer
 @export var tipo_de_recurso : int
@@ -18,19 +20,17 @@ const velocidad = 40
 func _on_timer_timeout():
 	buscar_recurso_cercano()
 func buscar_recurso_cercano():
-	print(tipo_de_recurso)
 	var distancia = []
 	var resultado_distancia = []
-	#prueba
+	#Almacena las coordenadas que coincide con el recurso
 	var lista_de_coordenadas_validas = []
 	var areas_de_recursos = escena_principal.obtener_areas_de_recursos()
 	for i in areas_de_recursos:
 		if i.tipo_recurso == tipo_de_recurso:
 			lista_de_coordenadas_validas.append(i.collision_shape_2d.position)
 	print(lista_de_coordenadas_validas)
-	#prueba
 	#Obtiene las coordenadas de todos los recursos
-	#coordenadas_recursos = escena_principal.obtener_coordenadas_area_recursos()
+	#Guarda en lista_de_coordenadas_validas los recursos q coincide con el aldeano
 	#Almacena la diferencia entre las coordenadas en valor absoluto
 	for i in lista_de_coordenadas_validas:
 		distancia.append(Vector2(
@@ -43,37 +43,41 @@ func buscar_recurso_cercano():
 	#Obtiene las coordenadas del recurso mas cercano al aldeano
 	#Si la lista no logro almacenar informacion significa que no hay recursos
 	#Si no hay recursos, se saltea el codigo para evitar errores
-	print(str(resultado_distancia) + "SOY" + name)
 	if resultado_distancia.size() > 0:
-		recurso_mas_cercano = escena_principal.areas_de_recurso[resultado_distancia.find(resultado_distancia.min())].coordenadas_shape
+		#Busca en la lista de coordenadas REALES el indice que coincide con el indice del recurso mas cercano del mismo tipo
+		recurso_mas_cercano = lista_de_coordenadas_validas[resultado_distancia.find(resultado_distancia.min())]
 		#Activa el movimiento
 		#El aldeano ira AL CENTRO del recurso, hay que arreglar esto mas adelante para que solo sea necesario el borde
 		moverse_x = true
 		moverse_y = true
 	else:
 		print("No quedan recursos de X tipo")
-	resultado_distancia.clear()
-	
+	#resultado_distancia.clear()
 func _process(_delta):
 	#Interruptor para el movimiento
 	if moverse_x or moverse_y:
 		#Si hay una diferencia en el eje X entre el recurso y el aldeano, activa el movimiento
-		if (0 < abs(position.x - recurso_mas_cercano.x)):
-			#Averigua si la diferencia es negativa o positiva para saber a que lado dirigirse
-			if 0 > position.x - recurso_mas_cercano.x:
-				velocity.x = velocidad
+		#Si la diferencia es menor a 1 pixeles, desactiva el movimiento del eje
+		if moverse_x:
+			if (1 < abs(position.x - recurso_mas_cercano.x)):
+				#Averigua si la diferencia es negativa o positiva para saber a que lado dirigirse
+				if 0 > position.x - recurso_mas_cercano.x:
+					velocity.x = velocidad
+				else:
+					velocity.x = -velocidad
 			else:
-				velocity.x = -velocidad
-		else:
-			#Si no hay diferencia, significa que ya llego al lugar indicado y desactiva el movimiento de dicho eje
-			moverse_x = false
-		if (0 < abs(position.y - recurso_mas_cercano.y)):
-			if 0 > position.y - recurso_mas_cercano.y:
-				velocity.y = velocidad
+				#Si no hay diferencia, significa que ya llego al lugar indicado y desactiva el movimiento de dicho eje
+				velocity.x = 0
+				moverse_x = false
+		if moverse_y:
+			if (1 < abs(position.y - recurso_mas_cercano.y)):
+				if 0 > position.y - recurso_mas_cercano.y:
+					velocity.y = velocidad
+				else:
+					velocity.y = -velocidad
 			else:
-				velocity.y = -velocidad
-		else:
-			moverse_y = false
+				velocity.y = 0
+				moverse_y = false
 		#Ejecuta el movimiento
 		move_and_slide()
 	pass
@@ -86,3 +90,9 @@ func estoy_dentro_de_la_zona():
 #Se resetea el timer para ejecutar el codigo de buscar recursos esperando a que el antiguo desaparezca
 func recurso_local_agotado():
 	timer.start()
+
+
+
+
+
+

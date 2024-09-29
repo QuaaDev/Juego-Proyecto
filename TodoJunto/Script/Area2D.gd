@@ -104,7 +104,8 @@ func entrando_al_recurso(body):
 			#Almacena al aldeano en la lista
 			lista_de_aldeanos.append(body)
 		else:
-			print("Entro en la zona, pero con el recurso equivocado :(")
+			#print("Entro en la zona, pero con el recurso equivocado :(")
+			pass
 	
 func saliendo_del_recurso(body):
 	if body.name.contains("Aldeano"):
