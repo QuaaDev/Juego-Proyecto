@@ -1,6 +1,12 @@
 res://Scene/Nucleo.tscn
 res://Script/Area2D.gd
+res://Script/ControladorEscena.gd
 res://Scene/Suelo.tscn
 res://Scene/aldeano.tscn
 res://Scene/zona_recurso.tscn
 res://Scene/Player.tscn
+res://Scene/CanvasPrincipal.tscn
+res://Script/ControladorCanvas.gd
+res://Script/IA_aldeano.gd
+res://Scene/SceneSecundarios/EdificioSeleccionado.tscn
+res://Script/ControladorSuelo.gd

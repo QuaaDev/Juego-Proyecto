@@ -5,7 +5,7 @@ var cantidad_comida = 0
 var cantidad_madera = 0
 #Hierro 1 comida 2 madera 3
 @onready var suelo = $Suelo
-@onready var canvas = $"Suelo/CanvasLayer"
+@onready var canvas = $"CanvasLayer"
 func _ready():
 	var recurso1 = Zona_de_recursos.new()
 	suelo.add_child(recurso1)
