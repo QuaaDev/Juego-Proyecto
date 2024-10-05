@@ -28,7 +28,6 @@ func buscar_recurso_cercano():
 	for i in areas_de_recursos:
 		if i.tipo_recurso == tipo_de_recurso:
 			lista_de_coordenadas_validas.append(i.collision_shape_2d.position)
-	print(lista_de_coordenadas_validas)
 	#Obtiene las coordenadas de todos los recursos
 	#Guarda en lista_de_coordenadas_validas los recursos q coincide con el aldeano
 	#Almacena la diferencia entre las coordenadas en valor absoluto

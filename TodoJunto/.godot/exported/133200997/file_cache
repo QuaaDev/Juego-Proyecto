@@ -1,3 +1,5 @@
-res://Scene/Player.tscn::6e9ed9a8aaa6e819f77cf82200f1fd2a::1726448185::res://.godot/exported/133200997/export-2967cbd809dd58ca10de051e59480961-Player.scn
-res://Scene/Principal.tscn::2c184b79a1242647a443e078b8884da4::1726448185::res://.godot/exported/133200997/export-41f3560c6be75a63e3f2d3c678f96191-Principal.scn
-res://Scene/zona_recurso.tscn::1385340dec4583284538ff741e1a0798::1726448185::res://.godot/exported/133200997/export-aea3ea931dd3064d13f42c9a99b131e0-zona_recurso.scn
+res://Scene/Player.tscn::f94c81823fa3155c1076fa82ebf74898::1727836680::res://.godot/exported/133200997/export-2967cbd809dd58ca10de051e59480961-Player.scn
+res://Scene/zona_recurso.tscn::421fb40942adf44ec49b2732a2e9e59d::1727836680::res://.godot/exported/133200997/export-aea3ea931dd3064d13f42c9a99b131e0-zona_recurso.scn
+res://Scene/aldeano.tscn::1dbcb53fe4e6127bd1ff304cd7236805::1727836680::res://.godot/exported/133200997/export-1742651ce7a93dc69626313a844e66b8-aldeano.scn
+res://Scene/Nucleo.tscn::584755b6eedd8efec82b706827b77fed::1727836732::res://.godot/exported/133200997/export-a0d7a3b77655013933ed0b9b9b9d10d7-Nucleo.scn
+res://Scene/Suelo.tscn::c9e9d5f15dc500f55d90cb6bc9059427::1727836680::res://.godot/exported/133200997/export-b5abbcb3c19aa1067ed895b5dc559d4e-Suelo.scn

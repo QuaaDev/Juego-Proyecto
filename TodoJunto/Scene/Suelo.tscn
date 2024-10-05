@@ -1,11 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ktpc5u1xfekm"]
+[gd_scene load_steps=7 format=3 uid="uid://ktpc5u1xfekm"]
 
 [ext_resource type="Texture2D" uid="uid://pd63m70gji" path="res://Assets/PisoBeta.png" id="1_gv26j"]
-[ext_resource type="Script" path="res://Script/ControladorCanvas.gd" id="2_6u3e8"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_d3b7q"]
-font_size = 30
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="Script" path="res://Script/ControladorSuelo.gd" id="1_lkm7l"]
+[ext_resource type="Texture2D" uid="uid://bd272wqgynl1f" path="res://Assets/CasaBeta.png" id="3_p4wt2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7335a"]
 texture = ExtResource("1_gv26j")
@@ -23,37 +20,30 @@ texture_region_size = Vector2i(40, 40)
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_76ud0"]
+texture = ExtResource("3_p4wt2")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSet" id="TileSet_0yk5v"]
 tile_size = Vector2i(40, 40)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7335a")
+sources/1 = SubResource("TileSetAtlasSource_76ud0")
 
-[node name="Suelo" type="Node"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("2_6u3e8")
-
-[node name="Madera" type="Label" parent="CanvasLayer"]
-offset_left = 1.0
-offset_top = 13.0
-offset_right = 415.0
-offset_bottom = 90.0
-text = "MADERA FACHERA:"
-label_settings = SubResource("LabelSettings_d3b7q")
-
-[node name="Hierro" type="Label" parent="CanvasLayer"]
-offset_top = 48.0
-offset_right = 396.0
-offset_bottom = 118.0
-text = "HIERRO FACHERO:"
-label_settings = SubResource("LabelSettings_d3b7q")
-
-[node name="Comida" type="Label" parent="CanvasLayer"]
-offset_top = 79.0
-offset_right = 408.0
-offset_bottom = 181.0
-text = "COMIDA FACHERA:"
-label_settings = SubResource("LabelSettings_d3b7q")
+[node name="Suelo" type="Node2D"]
+script = ExtResource("1_lkm7l")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0yk5v")

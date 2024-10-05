@@ -1,8 +1,10 @@
+Node2D
+Node
+Sprite2D
+Button
 CollisionShape2D
 Timer
-Sprite2D
 CharacterBody2D
-Node
 Area2D
 Label
 TextEdit

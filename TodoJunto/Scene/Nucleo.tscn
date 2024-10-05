@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cem14uls4kwk"]
+[gd_scene load_steps=6 format=3 uid="uid://cem14uls4kwk"]
 
 [ext_resource type="PackedScene" uid="uid://ktpc5u1xfekm" path="res://Scene/Suelo.tscn" id="1_osif7"]
 [ext_resource type="Script" path="res://Script/ControladorEscena.gd" id="1_tgs13"]
+[ext_resource type="PackedScene" uid="uid://u66pviw2ko76" path="res://Scene/CanvasPrincipal.tscn" id="2_noyj7"]
 [ext_resource type="PackedScene" uid="uid://crlwn3x2guj00" path="res://Scene/Player.tscn" id="3_xxmsj"]
 [ext_resource type="PackedScene" uid="uid://dudb84bw4lo4s" path="res://Scene/aldeano.tscn" id="4_rd3sf"]
 
@@ -11,6 +12,8 @@
 
 [node name="EscenaPrincipal" type="Node" parent="Menu"]
 script = ExtResource("1_tgs13")
+
+[node name="CanvasLayer" parent="Menu/EscenaPrincipal" instance=ExtResource("2_noyj7")]
 
 [node name="Suelo" parent="Menu/EscenaPrincipal" instance=ExtResource("1_osif7")]
 
