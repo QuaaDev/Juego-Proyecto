@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://ckfbdlbjl564t" path="res://Assets/icon.svg" id="2_2ypyp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ij46q"]
-radius = 60.0333
+radius = 18.2483
 
 [node name="Aldeano" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_41rv6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_2ypyp")
 
 [node name="Timer" type="Timer" parent="."]

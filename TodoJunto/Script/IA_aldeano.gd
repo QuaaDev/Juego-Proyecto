@@ -16,6 +16,7 @@ var movimientos_repetidos_y = []
 #Timer
 @onready var timer = $Timer
 @export var tipo_de_recurso : int
+@export var velocidad_recoleccion : int
 #Cuando todo este iniciado, ejecuta el codigo
 func _on_timer_timeout():
 	buscar_recurso_cercano()

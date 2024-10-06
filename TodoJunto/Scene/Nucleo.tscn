@@ -17,16 +17,24 @@ script = ExtResource("1_tgs13")
 
 [node name="Suelo" parent="Menu/EscenaPrincipal" instance=ExtResource("1_osif7")]
 
+[node name="Aldeano4" parent="Menu/EscenaPrincipal" instance=ExtResource("4_rd3sf")]
+position = Vector2(477, 424)
+tipo_de_recurso = 1
+velocidad_recoleccion = 50
+
 [node name="Aldeano3" parent="Menu/EscenaPrincipal" instance=ExtResource("4_rd3sf")]
 position = Vector2(1011, -15)
 tipo_de_recurso = 3
+velocidad_recoleccion = 100
 
 [node name="Player" parent="Menu/EscenaPrincipal" instance=ExtResource("3_xxmsj")]
 
 [node name="Aldeano2" parent="Menu/EscenaPrincipal" instance=ExtResource("4_rd3sf")]
 position = Vector2(40, -520)
 tipo_de_recurso = 2
+velocidad_recoleccion = 100
 
 [node name="Aldeano" parent="Menu/EscenaPrincipal" instance=ExtResource("4_rd3sf")]
 position = Vector2(80, 440)
 tipo_de_recurso = 1
+velocidad_recoleccion = 100

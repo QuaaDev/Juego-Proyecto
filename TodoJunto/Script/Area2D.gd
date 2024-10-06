@@ -3,7 +3,7 @@ class_name Zona_de_recursos
 #Recursos
 var tipo_recurso : int #Recurso de la zona
 #Hierro 1 comida 2 madera 3
-var velocidad_actualizacion_recursos = 10000
+var velocidad_actualizacion_recursos = 0
 #Recursos
 #Aldeanos
 var lista_de_aldeanos = []
@@ -114,7 +114,12 @@ func saliendo_del_recurso(body):
 
 func actualizar_recurso():
 	if cantidad_del_recurso >= 0:
+		velocidad_actualizacion_recursos = 0
+		#Recolecta la velocidad de recoleccion de todos los aldeanos asignados
+		for i in lista_de_aldeanos:
+			velocidad_actualizacion_recursos += i.velocidad_recoleccion
 		cantidad_del_recurso -= velocidad_actualizacion_recursos
 		EscenaPrincipal.actualizar_recursos(tipo_recurso,velocidad_actualizacion_recursos)
+		
 	else:
 		recurso_agotado()

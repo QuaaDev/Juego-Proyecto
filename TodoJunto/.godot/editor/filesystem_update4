@@ -3,3 +3,6 @@ res://Script/Area2D.gd
 res://Scene/Suelo.tscn
 res://Scene/CanvasPrincipal.tscn
 res://Scene/SceneSecundarios/EdificioSeleccionado.tscn
+res://Script/IA_aldeano.gd
+res://Scene/aldeano.tscn
+res://Script/ControladorEscena.gd
