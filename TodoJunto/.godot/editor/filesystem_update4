@@ -6,3 +6,6 @@ res://Scene/SceneSecundarios/EdificioSeleccionado.tscn
 res://Script/IA_aldeano.gd
 res://Scene/aldeano.tscn
 res://Script/ControladorEscena.gd
+res://Script/ControladorSuelo.gd
+res://Scene/spawn_aldeano.tscn
+res://Script/spawn_aldeano.gd

@@ -21,15 +21,15 @@ func _ready():
 	areas_de_recurso.append(recurso3)
 	var recurso4 = Zona_de_recursos.new()
 	suelo.add_child(recurso4)
-	recurso4.iniciar_zona(1,80,40, Vector2(-320,0),3200)
+	recurso4.iniciar_zona(1,80,40, Vector2(-320,0),32000)
 	areas_de_recurso.append(recurso4)
 	var recurso5 = Zona_de_recursos.new()
 	suelo.add_child(recurso5)
-	recurso5.iniciar_zona(2,80,40, Vector2(320,0),3200)
+	recurso5.iniciar_zona(2,80,40, Vector2(320,0),32000)
 	areas_de_recurso.append(recurso5)
 	var recurso6 = Zona_de_recursos.new()
 	suelo.add_child(recurso6)
-	recurso6.iniciar_zona(3,80,40, Vector2(0,200),3200)
+	recurso6.iniciar_zona(3,80,40, Vector2(0,200),32000)
 	areas_de_recurso.append(recurso6)
 	#For declarando el nombre a los nodos creados
 	var contador_for = 1
@@ -65,3 +65,6 @@ func obtener_areas_de_recursos():
 func activar_entered_body_area2d(objeto):
 	objeto.body_entered.connect(objeto.entrando_al_recurso)
 	objeto.body_exited.connect(objeto.saliendo_del_recurso)
+
+func agregar_hijo(objeto):
+	add_child(objeto)

@@ -30,7 +30,7 @@ velocidad_recoleccion = 100
 [node name="Player" parent="Menu/EscenaPrincipal" instance=ExtResource("3_xxmsj")]
 
 [node name="Aldeano2" parent="Menu/EscenaPrincipal" instance=ExtResource("4_rd3sf")]
-position = Vector2(40, -520)
+position = Vector2(51, -345)
 tipo_de_recurso = 2
 velocidad_recoleccion = 100
 

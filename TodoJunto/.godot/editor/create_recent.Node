@@ -1,9 +1,9 @@
+Timer
 Node2D
 Node
 Sprite2D
 Button
 CollisionShape2D
-Timer
 CharacterBody2D
 Area2D
 Label
