@@ -1,15 +1,14 @@
 extends Node2D
 @onready var escena_principal = get_parent().get_parent()
 @onready var cd_spawn = $CdSpawn
-@onready var cd_consulta_recurso= $ConsultarRecurso
 @onready var yo_mismo = $"."
 @onready var aldeano = preload("res://Scene/aldeano.tscn")
 var en_cd = false
 func _process(_delta):
 	pass
 func _ready():
-	cd_consulta_recurso.timeout.connect(yo_mismo.consultar_recurso)
 	cd_spawn.timeout.connect(yo_mismo.terminar_cd)
+#Al recibir la señal del ciclo, si hay mas de 300 de comida crea un nuevo aldeano
 func consultar_recurso():
 	if escena_principal.cantidad_comida >= 300 and !en_cd:
 		var new_aldeano = aldeano.instantiate()

@@ -8,3 +8,4 @@ res://Scene/CanvasPrincipal.tscn
 res://Scene/SceneSecundarios/EdificioSeleccionado.tscn
 res://Scene/spawn_aldeano.tscn
 res://Script/ControladorSuelo.gd
+res://Script/spawn_aldeano.gd

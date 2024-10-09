@@ -43,5 +43,7 @@ func colocar_edificio():
 	new_spawn.position = get_global_mouse_position()
 	add_child(new_spawn)
 	spawns_aldeanos_colocados.append(new_spawn)
+	
 func señal_ciclo():
-	pass
+	for i in spawns_aldeanos_colocados:
+		i.consultar_recurso()
