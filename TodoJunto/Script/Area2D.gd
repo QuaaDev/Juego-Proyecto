@@ -117,7 +117,9 @@ func actualizar_recurso():
 		velocidad_actualizacion_recursos = 0
 		#Recolecta la velocidad de recoleccion de todos los aldeanos asignados
 		for i in lista_de_aldeanos:
-			velocidad_actualizacion_recursos += i.velocidad_recoleccion
+			#Si el objeto no se le aplico queue_free, accede a el
+			if is_instance_valid(i):
+				velocidad_actualizacion_recursos += i.velocidad_recoleccion
 		cantidad_del_recurso -= velocidad_actualizacion_recursos
 		EscenaPrincipal.actualizar_recursos(tipo_recurso,velocidad_actualizacion_recursos)
 		

@@ -3,6 +3,7 @@ var existe_sprite = false
 @onready var escena_sprite_edificio = preload("res://Scene/SceneSecundarios/EdificioSeleccionado.tscn")
 @onready var tile_map = $TileMap
 @onready var spawn_aldeanos = preload("res://Scene/spawn_aldeano.tscn")
+var spawns_aldeanos_colocados = []
 func _ready():
 	pass # Replace with function body.
 
@@ -41,3 +42,6 @@ func colocar_edificio():
 	var new_spawn = spawn_aldeanos.instantiate()
 	new_spawn.position = get_global_mouse_position()
 	add_child(new_spawn)
+	spawns_aldeanos_colocados.append(new_spawn)
+func señal_ciclo():
+	pass

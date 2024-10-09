@@ -17,6 +17,10 @@ script = ExtResource("1_tgs13")
 
 [node name="Suelo" parent="Menu/EscenaPrincipal" instance=ExtResource("1_osif7")]
 
+[node name="Ciclo" type="Timer" parent="Menu/EscenaPrincipal"]
+wait_time = 5.0
+autostart = true
+
 [node name="Aldeano4" parent="Menu/EscenaPrincipal" instance=ExtResource("4_rd3sf")]
 position = Vector2(477, 424)
 tipo_de_recurso = 1

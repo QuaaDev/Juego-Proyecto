@@ -1,5 +1,8 @@
 extends CharacterBody2D
 @onready var escena_principal = get_parent()
+@onready var timer = $Timer
+@onready var yo_mismo = $"."
+
 #Recursos para calcular el recurso mas cercano
 var coordenadas_recursos
 var recurso_mas_cercano
@@ -13,8 +16,6 @@ const velocidad = 40
 #Velocidad del aldeano
 var movimientos_repetidos_x = []
 var movimientos_repetidos_y = []
-#Timer
-@onready var timer = $Timer
 @export var tipo_de_recurso : int
 @export var velocidad_recoleccion : int
 #Cuando todo este iniciado, ejecuta el codigo
@@ -51,7 +52,8 @@ func buscar_recurso_cercano():
 		moverse_x = true
 		moverse_y = true
 	else:
-		print("No quedan recursos de X tipo")
+		pass
+		#print("No quedan recursos de X tipo")
 	#resultado_distancia.clear()
 func _process(_delta):
 	#Interruptor para el movimiento

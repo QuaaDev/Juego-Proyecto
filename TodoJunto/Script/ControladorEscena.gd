@@ -6,7 +6,11 @@ var cantidad_madera = 0
 #Hierro 1 comida 2 madera 3
 @onready var suelo = $Suelo
 @onready var canvas = $"CanvasLayer"
+@onready var ciclo = $Ciclo
+@onready var yo_mismo = $"."
+
 func _ready():
+	ciclo.timeout.connect(yo_mismo.nuevo_ciclo)
 	var recurso1 = Zona_de_recursos.new()
 	suelo.add_child(recurso1)
 	recurso1.iniciar_zona(1,80,40, Vector2(160,0),3200)
@@ -36,6 +40,9 @@ func _ready():
 	for i in areas_de_recurso:
 		i.name = "Area"+ str(contador_for)
 		contador_for += 1
+	actualizar_recursos(1,500)
+	actualizar_recursos(2,500)
+	actualizar_recursos(3,500)
 #Interfaz
 func actualizar_recursos(recurso,cantidad):
 	if recurso == 1:
@@ -66,5 +73,31 @@ func activar_entered_body_area2d(objeto):
 	objeto.body_entered.connect(objeto.entrando_al_recurso)
 	objeto.body_exited.connect(objeto.saliendo_del_recurso)
 
-func agregar_hijo(objeto):
-	add_child(objeto)
+#Los ciclos defienen el tiempo del juego
+func nuevo_ciclo():
+	print("---------------------------------------------")
+	print("Un ciclo empieza")
+	var hijos_aldeanos = []
+	#Recolecta todos los hijos con el nombre aldeano
+	for i in yo_mismo.get_children():
+		if i.name.contains("Aldeano"):
+			hijos_aldeanos.append(i)
+	#Si la cantidad de comida es menor a lo que comen todos los aldeanos, algunos moriran de hambre
+	if cantidad_comida < hijos_aldeanos.size()*60:
+		#Calcula las muertes por hambre
+		var cantidad_muertes_por_hambre = int((hijos_aldeanos.size()*60 - cantidad_comida)/60)
+		#Ejecuta las muertes seleccionando un aldeano random, lo elimina de la lista de aldeanos y luego queue free
+		for i in range(0,cantidad_muertes_por_hambre):
+			var indice_seleccionado = randi() % hijos_aldeanos.size()
+			var aldeano_seleccionado = hijos_aldeanos[indice_seleccionado]
+			hijos_aldeanos.remove_at(indice_seleccionado)
+			aldeano_seleccionado.queue_free()
+		#Pone la comida en 0 para evitar numeros negativos
+		actualizar_recursos(2,-cantidad_comida)
+		print(cantidad_muertes_por_hambre)
+	else:
+		#Si hay suficiente comida, resta la comida consumida por aldeanos
+		actualizar_recursos(2,-hijos_aldeanos.size()*60)
+	#Luego de haber alimentado a las unidades, se propone el crear nuevas unidades
+	#El spawn averigua si hay comida suficiente para crear nuevas unidades
+	suelo.señal_ciclo()
