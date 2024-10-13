@@ -93,7 +93,16 @@ func estoy_dentro_de_la_zona():
 func recurso_local_agotado():
 	timer.start()
 
-
+func _ready():
+	#Conecta la señal de mouse a las funciones
+	yo_mismo.mouse_entered.connect(yo_mismo.el_mouse_entro)
+	yo_mismo.mouse_exited.connect(yo_mismo.el_mouse_salio)
+#---------------------Señales del mouse-------------------
+func el_mouse_entro():
+	escena_principal.mouse_entra_al_aldeano(yo_mismo)
+func el_mouse_salio():
+	escena_principal.mouse_sale_del_aldeano()
+#---------------------Señales del mouse-------------------
 
 
 

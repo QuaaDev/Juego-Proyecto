@@ -4,6 +4,10 @@ var cantidad_hierro = 0
 var cantidad_comida = 0
 var cantidad_madera = 0
 #Hierro 1 comida 2 madera 3
+#Esta variable guarda al aldeano que es focus del mouse
+var aldeano_focus_del_mouse
+#Esta variable controla a que afecta los clicks
+var mouse_sobre_aldeano = false
 @onready var suelo = $Suelo
 @onready var canvas = $"CanvasLayer"
 @onready var ciclo = $Ciclo
@@ -68,10 +72,21 @@ func obtener_coordenadas_area_recursos():
 	return lista_coordenadas
 func obtener_areas_de_recursos():
 	return areas_de_recurso
+#-----------Conectar_Señales---------------
 
 func activar_entered_body_area2d(objeto):
 	objeto.body_entered.connect(objeto.entrando_al_recurso)
 	objeto.body_exited.connect(objeto.saliendo_del_recurso)
+
+#-----------Conectar_Señales---------------
+#-----------------Mouse_interaccion_aldeano------------------
+func mouse_entra_al_aldeano(objeto):
+	#La informacion es enviada al canvas para que el la administre
+	canvas.obtener_aldeano_UI(objeto)
+func mouse_sale_del_aldeano():
+	#La informacion es enviada al canvas para que el la administre
+	canvas.desactivar_focus_aldeano()
+#-----------------Mouse_interaccion_aldeano------------------
 
 #Los ciclos defienen el tiempo del juego
 func nuevo_ciclo():
