@@ -86,6 +86,13 @@ func mouse_entra_al_aldeano(objeto):
 func mouse_sale_del_aldeano():
 	#La informacion es enviada al canvas para que el la administre
 	canvas.desactivar_focus_aldeano()
+	
+func mouse_entro_a_la_casa(objeto):
+	#La informacion es enviada al canvas para que el la administre
+	canvas.mouse_entro_a_la_casa(objeto)
+func mouse_salio_de_la_casa():
+	#La informacion es enviada al canvas para que el la administre
+	canvas.mouse_salio_de_la_casa()
 #-----------------Mouse_interaccion_aldeano------------------
 
 #Los ciclos defienen el tiempo del juego

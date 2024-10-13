@@ -1,8 +1,9 @@
-extends Node2D
+extends StaticBody2D
 @onready var escena_principal = get_parent().get_parent()
 @onready var cd_spawn = $CdSpawn
 @onready var yo_mismo = $"."
 @onready var aldeano = preload("res://Scene/aldeano.tscn")
+
 var limite_aldeanos = 4
 var aldeanos_actuales = 0
 var en_cd = false
@@ -10,6 +11,9 @@ func _process(_delta):
 	pass
 func _ready():
 	cd_spawn.timeout.connect(yo_mismo.terminar_cd)
+	yo_mismo.mouse_entered.connect(yo_mismo.el_mouse_entro)
+	
+	yo_mismo.mouse_exited.connect(yo_mismo.el_mouse_salio)
 #Al recibir la señal del ciclo, si hay mas de 300 de comida crea un nuevo aldeano
 func consultar_recurso():
 	#Limita la cantidad de aldeanos que puede producir 1 casa
@@ -28,3 +32,8 @@ func consultar_recurso():
 
 func terminar_cd():
 	en_cd = false
+
+func el_mouse_entro():
+	escena_principal.mouse_entro_a_la_casa(yo_mismo)
+func el_mouse_salio():
+	escena_principal.mouse_salio_de_la_casa()

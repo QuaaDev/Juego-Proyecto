@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8x43myqnp0af"]
+[gd_scene load_steps=3 format=3 uid="uid://c8x43myqnp0af"]
 
 [ext_resource type="Script" path="res://Script/spawn_aldeano.gd" id="1_7dj7e"]
 
-[node name="SpawnAldeano" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xr7k"]
+size = Vector2(80, 80)
+
+[node name="SpawnAldeano" type="StaticBody2D"]
+input_pickable = true
 script = ExtResource("1_7dj7e")
 
 [node name="CdSpawn" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7xr7k")

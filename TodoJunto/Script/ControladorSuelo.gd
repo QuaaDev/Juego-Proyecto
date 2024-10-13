@@ -40,7 +40,10 @@ func colocar_edificio():
 	tile_map.set_cell(0,tile_map.local_to_map(Vector2(get_global_mouse_position().x + 40, get_global_mouse_position().y)),1,Vector2(1,1),0)
 	tile_map.set_cell(0,tile_map.local_to_map(Vector2(get_global_mouse_position().x + 40, get_global_mouse_position().y-40)),1,Vector2(1,0),0)
 	var new_spawn = spawn_aldeanos.instantiate()
-	new_spawn.position = get_global_mouse_position()
+	#Se sincroniza la posicion del dibujado de tilemap con la posicion del objeto
+	#Posicion del mouse -> Posicion local del tilemap -> Posicion global -> Se arregla el indice de error de 20 pixeles
+	new_spawn.position = tile_map.map_to_local(tile_map.local_to_map(Vector2(get_global_mouse_position().x, get_global_mouse_position().y)))
+	new_spawn.position = Vector2(new_spawn.position.x + 20,new_spawn.position.y - 20)
 	add_child(new_spawn)
 	spawns_aldeanos_colocados.append(new_spawn)
 	

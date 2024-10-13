@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://u66pviw2ko76"]
+[gd_scene load_steps=6 format=3 uid="uid://u66pviw2ko76"]
 
 [ext_resource type="Script" path="res://Script/ControladorCanvas.gd" id="1_r3ym5"]
 [ext_resource type="Texture2D" uid="uid://bd272wqgynl1f" path="res://Assets/CasaBeta.png" id="2_ee6ln"]
 [ext_resource type="Script" path="res://Script/Canvas/PanelInfoAldeano.gd" id="3_552vh"]
+[ext_resource type="Script" path="res://Script/Canvas/PanelInfoCasa.gd" id="4_7kev5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d3b7q"]
 font_size = 30
@@ -41,6 +42,7 @@ offset_bottom = 214.0
 icon = ExtResource("2_ee6ln")
 
 [node name="PanelInfoAldeano" type="Panel" parent="."]
+visible = false
 offset_left = 833.0
 offset_top = 1.0
 offset_right = 1151.0
@@ -68,3 +70,31 @@ offset_top = 117.0
 offset_right = 322.0
 offset_bottom = 168.0
 text = "Casa_que_pertenece:"
+
+[node name="PanelInfoCasa" type="Panel" parent="."]
+offset_left = 849.0
+offset_right = 1157.0
+offset_bottom = 646.0
+script = ExtResource("4_7kev5")
+
+[node name="Nombre" type="Label" parent="PanelInfoCasa"]
+layout_mode = 0
+offset_right = 305.0
+offset_bottom = 91.0
+text = "Nombre:"
+
+[node name="Aldeanos" type="Label" parent="PanelInfoCasa"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 99.0
+offset_right = 306.0
+offset_bottom = 190.0
+text = "Aldeanos:"
+
+[node name="FocusRecurso" type="Label" parent="PanelInfoCasa"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 182.0
+offset_right = 306.0
+offset_bottom = 273.0
+text = "Se centran en el recurso:"
