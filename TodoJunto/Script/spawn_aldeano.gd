@@ -3,9 +3,9 @@ extends StaticBody2D
 @onready var cd_spawn = $CdSpawn
 @onready var yo_mismo = $"."
 @onready var aldeano = preload("res://Scene/aldeano.tscn")
-
 var limite_aldeanos = 4
-var aldeanos_actuales = 0
+var aldeanos_actuales = 0 #---------Remplazar esta info por la lista.size----------
+var aldeanos_locales = []#Lista de los aldeanos que viven en esta casa
 var en_cd = false
 func _process(_delta):
 	pass
@@ -24,11 +24,14 @@ func consultar_recurso():
 			new_aldeano.velocidad_recoleccion = 100
 			new_aldeano.position = yo_mismo.position
 			new_aldeano.name = "Aldeano" + str(randi())
+			aldeanos_locales.append(new_aldeano)#Asigna al aldeano a esta casa
+			new_aldeano.casa_asignada = yo_mismo#Le da la informacion de cual es su casa
 			escena_principal.add_child(new_aldeano)
 			escena_principal.actualizar_recursos(2,-300)
 			en_cd = true
 			cd_spawn.start()
 			aldeanos_actuales += 1
+			#Falta hacer una funcion para cuando un aldeano se muera, que se elimine su asignacion a la casa y bajar el contador
 
 func terminar_cd():
 	en_cd = false

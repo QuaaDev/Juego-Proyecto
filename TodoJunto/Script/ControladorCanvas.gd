@@ -42,7 +42,7 @@ func _input(event):
 		panel_info_aldeano.visible = false
 	#Si se hace click izquierdo con el foco sobre la casa
 	if event.is_action_pressed("ClickIzq") and foco_en_la_casa:
-		panel_info_casa.mostrar_info(casa_en_el_foco.name,"null",0)
+		panel_info_casa.mostrar_info(casa_en_el_foco.name,casa_en_el_foco.aldeanos_locales,0)
 		#A nombre B lista_de_aldeanos C recurso en el que se enfocan
 		panel_info_casa.visible = true
 	if event.is_action_pressed("ClickDer") and panel_info_casa.visible:

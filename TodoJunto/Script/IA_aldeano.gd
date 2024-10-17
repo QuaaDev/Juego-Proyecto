@@ -2,7 +2,8 @@ extends CharacterBody2D
 @onready var escena_principal = get_parent()
 @onready var timer = $Timer
 @onready var yo_mismo = $"."
-
+#Aca se registra en que casa vive el aldeano
+var casa_asignada
 #Recursos para calcular el recurso mas cercano
 var coordenadas_recursos
 var recurso_mas_cercano
