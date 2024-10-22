@@ -10,7 +10,9 @@ func mostrar_info(A,B : int,C):
 	recurso.text = "Recurso: " + descifrar_recurso(B)
 	#casa.text = "Pertenece a la casa: " + C
 	texto_casa(C)
+	
 func texto_casa(C):
+	#Comprueba si tiene una casa asignada antes de acceder a la info
 	if C != null:
 		casa.text = "Pertenece a la casa: " + C.name
 	else:
