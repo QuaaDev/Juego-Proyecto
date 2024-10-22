@@ -4,5 +4,3 @@ res://Scene/Suelo.tscn
 res://Scene/CanvasPrincipal.tscn
 res://Scene/spawn_aldeano.tscn
 res://Scene/aldeano.tscn
-res://Script/ControladorCanvas.gd
-res://Script/Canvas/PanelInfoAldeano.gd
