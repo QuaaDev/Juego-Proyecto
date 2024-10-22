@@ -2,12 +2,7 @@ res://Scene/Nucleo.tscn
 res://Script/Area2D.gd
 res://Scene/Suelo.tscn
 res://Scene/CanvasPrincipal.tscn
-res://Scene/SceneSecundarios/EdificioSeleccionado.tscn
 res://Scene/spawn_aldeano.tscn
-res://Scene/zona_recurso.tscn
-res://Scene/Player.tscn
 res://Scene/aldeano.tscn
-res://Script/IA_aldeano.gd
-res://Script/spawn_aldeano.gd
 res://Script/ControladorCanvas.gd
-res://Script/Canvas/PanelInfoCasa.gd
+res://Script/Canvas/PanelInfoAldeano.gd

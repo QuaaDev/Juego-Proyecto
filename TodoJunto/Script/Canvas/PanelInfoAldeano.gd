@@ -8,8 +8,13 @@ func mostrar_info(A,B : int,C):
 	#Edita la informacion con los argumentos enviados
 	nombre.text = "Nombre: " + A
 	recurso.text = "Recurso: " + descifrar_recurso(B)
-	casa.text = "Pertenece a la casa: " + C
-
+	#casa.text = "Pertenece a la casa: " + C
+	texto_casa(C)
+func texto_casa(C):
+	if C != null:
+		casa.text = "Pertenece a la casa: " + C.name
+	else:
+		casa.text = "Error, casa no asignada"
 func descifrar_recurso(Numero):
 	if Numero == 1:
 		return "Hierro"

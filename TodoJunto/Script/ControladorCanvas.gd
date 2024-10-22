@@ -35,7 +35,7 @@ func _input(event):
 	#Si se hace click izq y el mouse esta sobre un aldeano
 	if event.is_action_pressed("ClickIzq") and foco_en_el_aldeano:
 		#Muestra la informacion del aldeano
-		panel_info_aldeano.mostrar_info(aldeano_en_el_foco.name,aldeano_en_el_foco.tipo_de_recurso , "Null")
+		panel_info_aldeano.mostrar_info(aldeano_en_el_foco.name,aldeano_en_el_foco.tipo_de_recurso , aldeano_en_el_foco.casa_asignada)
 		panel_info_aldeano.visible = true
 	#Si el panel es visible y se apreta el click derecho
 	if event.is_action_pressed("ClickDer") and panel_info_aldeano.visible:
