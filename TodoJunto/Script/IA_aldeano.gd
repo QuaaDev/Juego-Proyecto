@@ -5,6 +5,7 @@ extends CharacterBody2D
 #-------------Navegation Path----------------
 @onready var navegacion = $NavigationAgent2D
 var desactivar_navegacion = true
+@onready var timer_navegacion = $TimerNavegacion
 #-------------Navegation Path----------------
 #Aca se registra en que casa vive el aldeano
 var casa_asignada
@@ -51,7 +52,8 @@ func buscar_recurso_cercano():
 		#Activa el movimiento
 		#El aldeano ira AL CENTRO del recurso, hay que arreglar esto mas adelante para que solo sea necesario el borde
 		#Pone de target las coordenadas del recurso
-		navegacion.target_position = recurso_mas_cercano
+		#Se le envia las coordenadas mas cercanas a la funcion para obtener un punto aleatorio
+		navegacion.target_position = obtener_posicion_aleatoria_del_recurso(recurso_mas_cercano, 80) #<-- hay que mejorar el parametro de radio mas adelante, actualmente es fijo en 80
 		#Activa el movimiento
 		desactivar_navegacion = false
 	else:
@@ -60,8 +62,8 @@ func buscar_recurso_cercano():
 		#print("No quedan recursos de X tipo")
 	#resultado_distancia.clear()
 func _process(_delta):
-	#Si el movimiento esta activado, lo ejecuta
-	if !desactivar_navegacion:
+	#(Si la navegacion esta activada) y (Si la distancia entre el final del camino es menor a 10 pixeles) ejecuta el movimiento
+	if !desactivar_navegacion:#<--- esto se podria optimizar haciendo que se ejecute cada X segundos, en vez de cada frame
 		#Obtiene la direccion del proximo nodo que debe alcanzar
 		var dir = to_local(navegacion.get_next_path_position()).normalized()
 		#Aplica velocidad segun la direccion
@@ -70,22 +72,32 @@ func _process(_delta):
 	pass
 #Cuando entra a la zona de recursos, frena el movimiento automaticamente
 #Esta señal la envia la zona de recursos al detectar el body
-func estoy_dentro_de_la_zona():
-	desactivar_navegacion = true
+func estoy_dentro_de_la_zona(): #Esta funcion quedo obsoleta, actualmente no tiene utilidad.
+	#desactivar_navegacion = true
+	pass
 
 #Se resetea el timer para ejecutar el codigo de buscar recursos esperando a que el antiguo desaparezca
 func recurso_local_agotado():
 	timer.start()
-
+func obtener_posicion_aleatoria_del_recurso(coordenadas, radio):
+	#Devuelve una coordenada entre dos limites en el eje X y dos del eje Y, por lo tanto entregara una coordenada aleatoria del area entregada
+	return Vector2(randi_range(coordenadas.x+radio, coordenadas.x-radio),randi_range(coordenadas.y+radio, coordenadas.y-radio))
+	#El radio es 80
 func _ready():
 	#Conecta la señal de mouse a las funciones
-	yo_mismo.mouse_entered.connect(yo_mismo.el_mouse_entro)
-	yo_mismo.mouse_exited.connect(yo_mismo.el_mouse_salio)
+	yo_mismo.mouse_entered.connect(self.el_mouse_entro)
+	yo_mismo.mouse_exited.connect(self.el_mouse_salio)
+	timer_navegacion.timeout.connect(self.comprobar_objetivo_final_recorrido)
 #---------------------Señales del mouse-------------------
 func el_mouse_entro():
 	escena_principal.mouse_entra_al_aldeano(yo_mismo)
 func el_mouse_salio():
 	escena_principal.mouse_sale_del_aldeano()
 #---------------------Señales del mouse-------------------
-
+func comprobar_objetivo_final_recorrido():
+	#cada timeout comprueba si estan cerca del nodo objetivo, si es asi se actualiza el objetivo
+	#Esto hace que caminen sin parar sobre su nodo y evita el error de no actualizarse cuando el recurso se agota
+	if navegacion.distance_to_target() < 10:
+		desactivar_navegacion = true
+		buscar_recurso_cercano()
 
