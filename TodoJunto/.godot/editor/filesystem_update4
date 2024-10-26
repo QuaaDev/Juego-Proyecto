@@ -1,6 +1,8 @@
-res://Scene/Nucleo.tscn
-res://Script/Area2D.gd
 res://Scene/Suelo.tscn
+res://Script/Area2D.gd
+res://Scene/Nucleo.tscn
 res://Scene/CanvasPrincipal.tscn
 res://Scene/spawn_aldeano.tscn
 res://Scene/aldeano.tscn
+res://Script/IA_aldeano.gd
+res://Script/ControladorEscena.gd

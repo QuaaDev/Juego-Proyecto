@@ -9,6 +9,8 @@ radius = 18.2483
 [node name="Aldeano" type="CharacterBody2D"]
 collision_mask = 0
 input_pickable = true
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_41rv6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -21,5 +23,14 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ij46q")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 80.0
+debug_enabled = true
+
+[node name="TimerNavegacion" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

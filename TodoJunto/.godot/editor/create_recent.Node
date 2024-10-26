@@ -1,9 +1,10 @@
+Timer
+NavigationAgent2D
 Label
 Panel
 StaticBody2D
 CollisionShape2D
 Container
-Timer
 Path2D
 Node2D
 Node

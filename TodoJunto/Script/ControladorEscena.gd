@@ -105,7 +105,7 @@ func nuevo_ciclo():
 		if i.name.contains("Aldeano"):
 			hijos_aldeanos.append(i)
 	#Si la cantidad de comida es menor a lo que comen todos los aldeanos, algunos moriran de hambre
-	if cantidad_comida < hijos_aldeanos.size()*60:
+	if cantidad_comida < hijos_aldeanos.size()*60: #<---- esto es 60
 		#Calcula las muertes por hambre
 		var cantidad_muertes_por_hambre = int((hijos_aldeanos.size()*60 - cantidad_comida)/60)
 		#Ejecuta las muertes seleccionando un aldeano random, lo elimina de la lista de aldeanos y luego queue free

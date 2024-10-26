@@ -2,16 +2,16 @@ extends CharacterBody2D
 @onready var escena_principal = get_parent()
 @onready var timer = $Timer
 @onready var yo_mismo = $"."
+#-------------Navegation Path----------------
+@onready var navegacion = $NavigationAgent2D
+var desactivar_navegacion = true
+#-------------Navegation Path----------------
 #Aca se registra en que casa vive el aldeano
 var casa_asignada
 #Recursos para calcular el recurso mas cercano
 var coordenadas_recursos
 var recurso_mas_cercano
 #Recursos para calcular el recurso mas cercano
-#Controladores de movimiento
-var moverse_x = false
-var moverse_y = false
-#Controladores de movimiento
 #Velocidad del aldeano
 const velocidad = 40
 #Velocidad del aldeano
@@ -50,45 +50,28 @@ func buscar_recurso_cercano():
 		recurso_mas_cercano = lista_de_coordenadas_validas[resultado_distancia.find(resultado_distancia.min())]
 		#Activa el movimiento
 		#El aldeano ira AL CENTRO del recurso, hay que arreglar esto mas adelante para que solo sea necesario el borde
-		moverse_x = true
-		moverse_y = true
+		#Pone de target las coordenadas del recurso
+		navegacion.target_position = recurso_mas_cercano
+		#Activa el movimiento
+		desactivar_navegacion = false
 	else:
-		pass
+		#Desactiva el movimiento
+		desactivar_navegacion = true
 		#print("No quedan recursos de X tipo")
 	#resultado_distancia.clear()
 func _process(_delta):
-	#Interruptor para el movimiento
-	if moverse_x or moverse_y:
-		#Si hay una diferencia en el eje X entre el recurso y el aldeano, activa el movimiento
-		#Si la diferencia es menor a 1 pixeles, desactiva el movimiento del eje
-		if moverse_x:
-			if (1 < abs(position.x - recurso_mas_cercano.x)):
-				#Averigua si la diferencia es negativa o positiva para saber a que lado dirigirse
-				if 0 > position.x - recurso_mas_cercano.x:
-					velocity.x = velocidad
-				else:
-					velocity.x = -velocidad
-			else:
-				#Si no hay diferencia, significa que ya llego al lugar indicado y desactiva el movimiento de dicho eje
-				velocity.x = 0
-				moverse_x = false
-		if moverse_y:
-			if (1 < abs(position.y - recurso_mas_cercano.y)):
-				if 0 > position.y - recurso_mas_cercano.y:
-					velocity.y = velocidad
-				else:
-					velocity.y = -velocidad
-			else:
-				velocity.y = 0
-				moverse_y = false
-		#Ejecuta el movimiento
+	#Si el movimiento esta activado, lo ejecuta
+	if !desactivar_navegacion:
+		#Obtiene la direccion del proximo nodo que debe alcanzar
+		var dir = to_local(navegacion.get_next_path_position()).normalized()
+		#Aplica velocidad segun la direccion
+		velocity = dir * velocidad
 		move_and_slide()
 	pass
 #Cuando entra a la zona de recursos, frena el movimiento automaticamente
 #Esta señal la envia la zona de recursos al detectar el body
 func estoy_dentro_de_la_zona():
-	moverse_x = false
-	moverse_y = false
+	desactivar_navegacion = true
 
 #Se resetea el timer para ejecutar el codigo de buscar recursos esperando a que el antiguo desaparezca
 func recurso_local_agotado():
@@ -104,7 +87,5 @@ func el_mouse_entro():
 func el_mouse_salio():
 	escena_principal.mouse_sale_del_aldeano()
 #---------------------Señales del mouse-------------------
-
-
 
 
